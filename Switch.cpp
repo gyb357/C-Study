@@ -84,6 +84,23 @@ int main() {
 	
 	//--------------------------------//
 	
+	printf("20192718 고영보 C언어 실습 2019.04.16\n");
+	int x, y;
+	char xy;
+
+	printf("**** result ****\n\n");
+	printf("Input x xy == ?");
+	scanf("%d %c %d", &x, &xy, &y);
+
+	if (xy == '*') {
+		printf("%d * %d = %d\n", x, y, x*y);
+		printf("%d / %d = %d\n", x, y, x/y);
+		printf("%d + %d = %d\n", x, y, x+y);
+		printf("%d - %d = %d\n", x, y, x-y);
+	}
+	
+	//--------------------------------//
+	
 	*/
 	return 0;
 }
