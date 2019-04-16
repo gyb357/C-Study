@@ -32,8 +32,6 @@ int main() {
 	
 	int  score;
 
-	printf("20192718 고영보 C언어 실습\n");
-
 	printf("점수를 입력하시오.: ");
 	scanf("%d", &score);
 
@@ -53,8 +51,6 @@ int main() {
 	
 	char i;
 
-	printf("20192718 고영보 C언어 실습\n");
-
 	printf("문자를 입력하시오.: ");
 	scanf("%c", &i);
 
@@ -70,8 +66,6 @@ int main() {
 	
 	int i;
 
-	printf("20192718 고영보 C언어 실습\n");
-
 	printf("enter the number.: ");
 	scanf("%d", &i);
 
@@ -84,7 +78,6 @@ int main() {
 	
 	//--------------------------------//
 	
-	printf("20192718 고영보 C언어 실습 2019.04.16\n");
 	int x, y;
 	char xy;
 
@@ -92,12 +85,11 @@ int main() {
 	printf("Input x xy == ?");
 	scanf("%d %c %d", &x, &xy, &y);
 
-	if (xy == '*') {
-		printf("%d * %d = %d\n", x, y, x*y);
-		printf("%d / %d = %d\n", x, y, x/y);
-		printf("%d + %d = %d\n", x, y, x+y);
-		printf("%d - %d = %d\n", x, y, x-y);
-	}
+	if (xy == '*') { printf("%d * %d = %d\n", x, y, x * y); }
+	if (xy == '/') {printf("%d / %d = %d\n", x, y, x / y);}
+	if (xy == '+') {printf("%d + %d = %d\n", x, y, x + y);}
+	if (xy == '-') {printf("%d - %d = %d\n", x, y, x - y);}
+
 	
 	//--------------------------------//
 	
