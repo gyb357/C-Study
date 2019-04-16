@@ -21,4 +21,4 @@ void calc() {
 	printf("a in calc() is = $d\n", a);
 }
 
-// ±¸Á¶Àû ÇÁ·Î±×·¡¹Ö: ¼øÂ÷, ÆÇ´Ü, ¹Ýº¹
+// êµ¬ì¡°ì  í”„ë¡œê·¸ëž˜ë°: ìˆœì°¨, íŒë‹¨, ë°˜ë³µ
