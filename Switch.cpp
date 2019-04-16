@@ -51,6 +51,22 @@ int main() {
 	
 	//--------------------------------//
 	
+	int  i;
+
+	printf("20192718 고영보 C언어 실습\n");
+
+	printf("수를 입력하시오.: ");
+	scanf("%d", &i);
+
+	switch (i) {
+		case 1: printf("One\n"); break;
+		case 2: printf("Two\n"); break;
+		case 3: printf("Three\n"); break;
+		default: printf("Error\n"); break;
+	}
+	
+	//--------------------------------//
+	
 	*/
 	return 0;
 }
