@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+	int a;
+
+	printf("a값울 입력하시오: ");
+	scanf("%d",&a);
+
+	if (a > 90) {
+		printf("A\n");
+	} else if (a > 80) {
+		printf("B\n");
+	} else {
+		printf("C\n");
+	}
+
+	return 0;
+}
