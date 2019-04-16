@@ -5,15 +5,15 @@ int main(void) {
 
 	printf("Hello! World!\n");
 
-	printf("�Է°� 1:\n");
+	printf("입력값 1:\n");
 	scanf("%d", &a);
 
-	printf("�Է°� 2:\n");
+	printf("입력값 2:\n");
 	scanf("%d", &b);
 
 	printf("\n\n");
 
-	printf("�Է°�(%d) + �Է°�(%d) = %d\n", a, b, a + b);
+	printf("입력값(%d) + 입력값(%d) = %d\n", a, b, a + b);
 
 	return 0;
 }
