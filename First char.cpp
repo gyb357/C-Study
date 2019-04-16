@@ -14,8 +14,8 @@ void fir() {
 	int one, two, result;
 	float three;
 
-	one = 'd';	// d ´Â ¾Æ½ºÅ°ÄÚµå¿¡¼­ 100	-> one = 100
-	two = 2.3;	// ¼Ò¼ýÁ¡Àº »ý·«			-> two = 2.3
+	one = 'd';	// d ëŠ” ì•„ìŠ¤í‚¤ì½”ë“œì—ì„œ 100	-> one = 100
+	two = 2.3;	// ì†Œìˆ«ì ì€ ìƒëžµ			-> two = 2.3
 	three = 3;
 
 	result = one + two + three;
@@ -38,8 +38,8 @@ void sec() {
 }
 
 void thrd() {
-	printf("\a");							// º§¼Ò¸®
-	printf("KIM\n \"MIN\" \n /*LEE*/\n");	// \"blabla\"´Â blabla¿Í ""±îÁö Ãâ·Â
+	printf("\a");							// ë²¨ì†Œë¦¬
+	printf("KIM\n \"MIN\" \n /*LEE*/\n");	// \"blabla\"ëŠ” blablaì™€ ""ê¹Œì§€ ì¶œë ¥
 }
 
 void four() {
