@@ -51,17 +51,18 @@ int main() {
 	
 	//--------------------------------//
 	
-	int  i;
+	char i;
 
 	printf("20192718 고영보 C언어 실습\n");
 
-	printf("수를 입력하시오.: ");
-	scanf("%d", &i);
+	printf("문자를 입력하시오.: ");
+	scanf("%c", &i);
 
 	switch (i) {
-		case 1: printf("One\n"); break;
-		case 2: printf("Two\n"); break;
-		case 3: printf("Three\n"); break;
+		case 'a': printf("'a'\n"); break;
+		case 'b': printf("'b'\n"); break;
+		case 'c': printf("'c'\n"); break;
+		case 'd': printf("'d'\n"); break;
 		default: printf("Error\n"); break;
 	}
 	
