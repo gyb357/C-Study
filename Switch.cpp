@@ -68,6 +68,22 @@ int main() {
 	
 	//--------------------------------//
 	
+	int i;
+
+	printf("20192718 고영보 C언어 실습\n");
+
+	printf("enter the number.: ");
+	scanf("%d", &i);
+
+	if (i < 0) {
+		printf("number is negative.\n");
+	}
+	if (i >= 0) {
+		printf("number is positive.\n");
+	}
+	
+	//--------------------------------//
+	
 	*/
 	return 0;
 }
