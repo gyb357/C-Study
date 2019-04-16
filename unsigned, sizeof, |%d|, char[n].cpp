@@ -1,13 +1,13 @@
 #include <stdio.h>
 
 int main() {
-	// Á¤¼öÇü º¯¼ö
+	// ì •ìˆ˜í˜• ë³€ìˆ˜
 	int i, j;
 	unsigned int u_i;
 	long I;
 	unsigned long u_I;
 
-	// ½Ç¼öÇü º¯¼ö
+	// ì‹¤ìˆ˜í˜• ë³€ìˆ˜
 	float f;
 	double d;
 
@@ -25,23 +25,23 @@ int main() {
 	printf("sizeof s = %d u_s = %d\n", sizeof(short), sizeof(short));
 
 	i = 0.5;
-	printf("i = 0.5, °á°ú°ª = %d\n", i); // intÇü º¯¼ö´Â ¼Ò¼ıÁ¡ Ç¥±â ¾ÈµÊ
+	printf("i = 0.5, ê²°ê³¼ê°’ = %d\n", i); // intí˜• ë³€ìˆ˜ëŠ” ì†Œìˆ«ì  í‘œê¸° ì•ˆë¨
 	
 	i = 10;
 	j = 3;
-	printf("i / j = %d\n", i / j); // / = ¸ò
-	printf("i % j = %d\n", i % j); // % = ³ª¸ÓÁö
+	printf("i / j = %d\n", i / j); // / = ëª«
+	printf("i % j = %d\n", i % j); // % = ë‚˜ë¨¸ì§€
 
-	printf("|%d| |%5d| |%05d|\n", i, i, i); // 5Ä­
+	printf("|%d| |%5d| |%05d|\n", i, i, i); // 5ì¹¸
 
 	f = 3.14;
 	printf("|%f| |%5f| |%05f|\n", f, f, f);
 	printf("|%d| |%5d| |%05d|\n", (int) f, (int) f, (int) f);
 
-	printf("|%f| |%8.3f| |%.3f|\n", f, f, f); // .3 = ¼Ò¼ı¼¶ 3ÀÚ¸®±îÁö Ç¥±â
+	printf("|%f| |%8.3f| |%.3f|\n", f, f, f); // .3 = ì†Œìˆ«ì„¬ 3ìë¦¬ê¹Œì§€ í‘œê¸°
 
 	char c;
-	char str[10] = "123456789"; // 10°³ÀÇ °ø°£
+	char str[10] = "123456789"; // 10ê°œì˜ ê³µê°„
 
 
 	
