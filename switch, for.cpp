@@ -81,7 +81,7 @@ int main() {
 	*/
 
 	/*
-	int a, i;
+	int a, b, i;
 
 	a = 0;
 	for (i = 0; i < 100; i++) {
@@ -91,6 +91,18 @@ int main() {
 		}
 	}
 	*/
+
+	int a, b, i;
+
+	a = 0;
+	for (i = 0; i < 100; i++) {
+		a += i;
+		b = a;
+		if (a % 2 == 1) {
+			b += i;
+		}
+	}
+	printf("%d", b);
 
 	return 0;
 }
