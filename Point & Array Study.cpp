@@ -49,7 +49,7 @@ int main() {
 	p_a = a;
 	//배열의 이름은 첫 번째 원소가 저장된 기억장소의 주소
 	for (int i = 0; i < 5; i++) {
-		printf("**[%d]**", p_a + i, *(p_a + i));
+		printf("**%d[%d]**", p_a + i, *(p_a + i));
 	}
 	printf("\n");
 	*/
