@@ -108,6 +108,10 @@ void decrypt(char string[], int shift) {				// 문자열 입력함수의 string�
 			if (string[i] > 'z') {						// 만약 shift만큼 밀어낸 문자가 z를 넘어설 경우
 				string[i] -= 26;						// 스펠링 개수인 26을 빼서 z를 a로 바꾼다
 			}
+														// 복호화 과정은 순번을 뒤로 밀어야 하므로 a뒤의 문자가 올 때까지 고려해야 한다
+			else if (string[i] < 'a') {					// 만약에 i번째의 string문자열이 a보다 뒤에 있을 경우
+				string[i] += 26;						// 그 문자를 26순번 만큼 더하여 z로 변환한다
+			}
 		}
 
 		i++;											// 다음 string번째의 문자열을 불러오기 위함
