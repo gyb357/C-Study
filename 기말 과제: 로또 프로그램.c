@@ -208,7 +208,7 @@ void rotto_num(int money, int automatic, int manual, int recommend) {
 				for (int k = 0; k < j; k++) {
 					if (manualnum == manualarr[k]) { // 숫자가 중복되는것을 방지함
 						printf("\n");
-						printf("숫자가 중복되어서는 안됩니다!. 다시 입력해주세요.\n");
+						printf("숫자가 중복되어서는 안됩니다! 다시 입력해주세요.\n");
 
 						goto mrtrn;
 					}
