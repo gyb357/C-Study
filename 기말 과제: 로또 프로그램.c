@@ -221,6 +221,8 @@ void rotto_num(int money, int automatic, int manual, int recommend) {
 				}
 
 				manualarr[j] = manualnum;
+				
+				fprintf(fp, "%d\n", manualarr[j]);
 			}
 
 			printf("\n");
