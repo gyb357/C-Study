@@ -85,7 +85,7 @@ select: // goto select에 의해서 이곳에서 다시 순차실행
 				goto automanual;
 			}
 			else if (automatic + manual < money * 0.001) {
-				printf("잔돈이 있습니다!. 자동과 수동 개수를 다시 입력해주세요.\n");
+				printf("잔돈이 있습니다! 자동과 수동 개수를 다시 입력해주세요.\n");
 
 				goto automanual;
 			}
