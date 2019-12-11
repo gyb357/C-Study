@@ -14,7 +14,7 @@
 // 함수 선언
 void menu();
 void bubble(int arr[]);
-void rotto_auto(int atomatic, int manual);
+void rotto_auto(int automatic, int manual);
 void rotto_manual(int automatic, int manual);
 
 // 메인 함수
