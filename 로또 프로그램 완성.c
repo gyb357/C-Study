@@ -164,20 +164,20 @@ void rotto_auto(int automatic, int manual) {
 	fopen("rotto.txt", "r");
 
 	for (int i = 0; i < COUNT * automatic; i++) {
-		str[i] = atoi(fgets(buffer, 128, fp)); // rotto.txt 파일 안에 있는 스트링 문자를 가져온 뒤 정수로 형 변환
+		str[i] = atoi(fgets(buffer, 1024, fp)); // rotto.txt 파일 안에 있는 스트링 문자를 가져온 뒤 정수로 형 변환
+
+		count[str[i]]++;
 	}
 
 	fclose(fp); // 파일 닫기
 
+	bubble(str); // 버블 정렬 함수 호출
+
 	printf("----- 통계 -----\n");
 
 	for (int i = 1; i < MAX; i++) {
-		count[str[i]]++;
-
 		printf("%d번: %d\n", i, count[i]);
 	}
-
-	bubble(str); // 버블 정렬 함수 호출
 
 	printf("가장 많이 뽑힌 숫자를 추천합니다.\n");
 
