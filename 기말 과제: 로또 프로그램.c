@@ -1,122 +1,36 @@
+// 헤더파일
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <string.h>
+#include <time.h>	// srand함수를 쓰기 위한 time 헤더파일
 
+// 전처리기
 #define DEBUG 0
 #define MAX 45
-#define COUNTMAX 7
+#define COUNT 7
+
+#define BONUS "보너스"
 
 // 함수 선언
 void menu();
-void rotto_num(int money, int automatic, int manual, int recommend);
-void sort();
+void bubble(int arr[]);
+void rotto_auto(int atomatic, int manual);
+void rotto_manual(int automatic, int manual);
 
 // 메인 함수
 int main() {
-	system("title rotto program"); // 프로그램 타이틀 이름 설정
-	system("color f0"); // 프로그램 바탕, 글씨 색깔 설정
+	system("title rotto v2.exe");
+	system("color f0");
 
 	menu();
 
-	system("pause"); // 프로그램 정지
+	system("pause");
 
 	return 0;
 }
 
-// 메뉴 함수
-void menu() {
-	// 변수 선언
-	int num;
-	int money;
-	int automatic, manual;
-	int rec;
-
-	printf("----- 로또 프로그램 -----\n");
-
-select: // goto select에 의해서 이곳에서 다시 순차실행
-
-	printf("1. 실행\n");
-	printf("2. 종료\n");
-	printf("원하시는 숫자를 입력하세요: ");
-
-	scanf("%d", &num);
-
-	switch (num) {
-	case 1: // 1일 때
-		// 추천 번호 메뉴
-	re: // goto re에 의해 이곳에서 다시 순차실행
-
-		printf("\n");
-		printf("추천 번호를 보시겠습니까?\n");
-		printf("1. 네\n");
-		printf("2. 아니요\n");
-		printf("원하시는 숫자를 입력하세요: ");
-
-		scanf("%d", &rec);
-
-		if (rec < 1 || rec > 2) {
-			printf("\n");
-			printf("잘못된 입력입니다.\n");
-
-			goto re;
-		}
-
-	// 돈, 자동, 수동 개수와 추천번호 출력 여부를 입력받음
-		printf("\n");
-		printf("금액을 입력해주십시오: ");
-		scanf("%d", &money);
-
-		if (money >= 1000) {
-			printf("\n");
-			printf("자동, 수동 개수를 입력하세요.\n");
-
-		automanual: // goto automanual에 의해 이곳에서 다시 순차실행
-
-			printf("자동: ");
-			scanf("%d", &automatic);
-
-			printf("수동: ");
-			scanf("%d", &manual);
-
-			if (automatic + manual > money * 0.001) {
-				printf("%d원 이상 구입할 수 없습니다!\n", money);
-
-				goto automanual;
-			}
-			else if (automatic + manual < money * 0.001) {
-				printf("잔돈이 있습니다! 자동과 수동 개수를 다시 입력해주세요.\n");
-
-				goto automanual;
-			}
-			else {
-				rotto_num(money, automatic, manual, rec);
-			}
-
-			//recomment(rec);
-		}
-		else {
-			printf("\n");
-			printf("돈이 충분하지 않으므로 프로그램을 종료합니다.\n");
-		}
-
-		break;
-
-	case 2: // 2일때 아무것도 안하고 프로그램 종료
-		break;
-
-	default: // 1, 2가 아닐때
-		printf("\n");
-		printf("잘못된 입력입니다.\n");
-
-		goto select; // select로 이동함
-
-		break;
-	}
-}
-
-// 오름차순 정렬 함수
-void sort(int arr[]) {
+// 버블 정렬 함수
+void bubble(int arr[]) {
 	int least, tmp;
 
 	for (int i = 0; i < MAX; i++) {
@@ -134,129 +48,177 @@ void sort(int arr[]) {
 	}
 }
 
-// 로또 번호 함수
-void rotto_num(int money, int automatic, int manual, int recommend) {
-	// 변수 선언
-	int autonum[128];
-	int autoarr[COUNTMAX] = { 0 };
+// 메뉴 함수
+void menu() {
+	int select;
 
-	int manualnum = 0;
-	int manualarr[COUNTMAX] = { 0 };
+	int money;
+	int automatic, manual;
 
-	char bonus[10] = "(보너스)";
+	printf("----- 로또 프로그램 -----\n");
 
-	FILE *fp; // 파일 포인터
+	while (1) {
+		printf("1. 실행\n");
+		printf("2. 종료\n");
+		printf("입력: ");
 
-	// 파일 열기
-	if ((fp = fopen("rotto.txt", "w")) == NULL) { // 파일이 없으면
-		if (DEBUG) { // 디버그일때만 아래 문장들을 출력
-			printf("\n");
+		scanf("%d", &select);
+
+		switch (select) {
+		case 1: // 실행을 선택했을 시 수행
+
+			while (1) {
+				printf("돈: ");
+				scanf("%d", &money);
+
+				printf("자동: ");
+				scanf("%d", &automatic);
+
+				printf("수동: ");
+				scanf("%d", &manual);
+
+				if (money * 0.001 >= automatic + manual) { // 돈이 모자라는지 검사
+
+					if (automatic) { // 자동이 있을 경우
+						rotto_auto(automatic, manual);
+					}
+					if (manual) { // 수동이 있을 경우
+						rotto_manual(automatic, manual);
+					}
+
+					break;
+				}
+				else {
+					printf("돈이 부족합니다.\n");
+				}
+			}
+			break; // case 1 탈출
+
+		case 2: // 종료를 선택했을 시 수행
+			printf("프로그램 종료.\n");
+			break; // case 2 탈출
+
+		default: // 이외의 값일 때 수행
+			printf("잘못된 입력입니다.\n");
+			break; // dafault 탈출
+		}
+
+		if (select == 1 || select == 2) { // 1이나 2를 선택했을 경우
+			break; // 초기 수행 입력 while문 탈출
+		}
+	}
+}
+
+// 자동 생성 함수
+void rotto_auto(int automatic, int manual) {
+	int anum[128];
+	int aarr[COUNT] = { 0 };
+
+	FILE *fp;
+
+	
+	if ((fp = fopen("rotto.txt", "w")) == NULL) { // rotto.txt 파일을 쓰기모드로 호출. 이때 파일이 존재하지 않으면 아래 수행
+		if (DEBUG) { // 디버그에 값이 있으면
 			printf("rotto.txt 파일을 불러올 수 없습니다.\n");
 		}
 
 		exit(1);
 	}
 	else {
-		if (DEBUG) {
-			printf("\n");
+		if (DEBUG) { // 디버그에 값이 있으면
 			printf("rotto.txt 파일을 성공적으로 불러왔습니다.\n");
 		}
 	}
+	
+	srand((unsigned)time(NULL)); // 매번 실행할때마다 다르게 난수를 생성
 
-	// 자동 생성
-	if (automatic) {
-		srand((unsigned)time(NULL)); // 매번 프로그램 실행할때마다 다르게 난수를 생성
+	for (int i = 0; i < automatic; i++) {
+		printf("----- %d번째 로또 -----\n", i + 1);
 
-		for (int i = 0; i < automatic; i++) {
-			printf("----- %d번째 로또 -----\n", i + 1);
+		for (int j = 0; j < 7; j++) {
+			again: // goto artrn에 의해 이곳에서 다시 순차 실행
 
-			for (int j = 0; j < 7; j++) {
-			artrn: // goto artrn에 의해 이곳에서 다시 순차 실행
+			anum[j] = rand() % MAX + 1; // 1 부터 45까지 랜덤으로 난수 생성
 
-				autonum[j] = rand() % MAX + 1; // 1 부터 45까지 랜덤으로 난수 생성
-
-				// 번호 중복 검사
-				for (int k = 0; k < j; k++) {
-					if (autonum[j] == autoarr[k]) { // 만약 autonum이 처음부터 K까지 뽑힌 숫자와 중복되면
-						goto artrn; // rtrn으로 이동함
-					}
+			for (int k = 0; k < j; k++) { // 숫자 중복 검사
+				if (anum[j] == aarr[k]) { // 만약 숫자와 중복되면
+					goto again; // again으로 역행
 				}
-
-				autoarr[j] = autonum[j];
-
-				printf("%d번째 번호: %d %s\n", j + 1, autoarr[j], (j == 6 ? bonus : ""));
-
-				fprintf(fp, "%d\n", autoarr[j]);
 			}
+
+			aarr[j] = anum[j];
+
+			printf("%d번째 번호: %d %s\n", j + 1, aarr[j], (j == 6 ? BONUS : ""));
+
+			fprintf(fp, "%d\n", aarr[j]); // 파일에 숫자들을 저장함
 		}
+	}
+
+	fclose(fp);
+
+	// 통계
+	int buffer[1024];
+	int str[1024] = { 0 };
+	int count[1024] = { 0 };
+
+	fopen("rotto.txt", "r");
+
+	for (int i = 1; i < COUNT * automatic; i++) {
+		str[i] = atoi(fgets(buffer, 128, fp)); // rotto.txt 파일 안에 있는 스트링 문자를 가져온 뒤 정수로 형 변환
 	}
 
 	fclose(fp); // 파일 닫기
 
-	// 수동 생성
-	if (manual) {
-		for (int i = 0; i < manual; i++) {
-			printf("----- %d번째 로또 -----\n", automatic + i + 1);
+	printf("----- 통계 -----\n");
 
-			for (int j = 0; j < 7; j++) {
-			mrtrn:
+	for (int i = 1; i < MAX; i++) {
+		count[str[i]] += 1;
 
-				printf("%d번째 %s 번호: ", j + 1, (j == 6 ? bonus : ""));
+		if (count[i]) {
+			printf("%d번: %d\n", i, count[i]);
+		}
+	}
 
-				scanf("%d", &manualnum);
+	bubble(str); // 버블 정렬 함수 호출
 
-				for (int k = 0; k < j; k++) {
-					if (manualnum == manualarr[k]) { // 숫자가 중복되는것을 방지함
-						printf("\n");
-						printf("숫자가 중복되어서는 안됩니다! 다시 입력해주세요.\n");
+	printf("가장 많이 뽑힌 숫자를 추천합니다.\n");
 
-						goto mrtrn;
-					}
-					else if (manualnum > MAX) { // 숫자가 45를 넘기면
-						printf("\n");
-						printf("숫자는 45 이하여야 합니다!. 다시 입력해주세요.\n");
+	if (!manual) {
+		menu(); // 메뉴 함수 호출
+	}
+}
 
-						goto mrtrn;
-					}
+// 수동 생성 함수
+void rotto_manual(int automatic, int manual) {
+	int mnum;
+	int marr[MAX] = { 0 };
+
+	for (int i = 0; i < manual; i++) { // 수동 개수만큼 반복
+		printf("----- %d번째 로또 -----\n", automatic + i + 1);
+
+		for (int j = 0; j < COUNT; j++) { // 행운의 번호를 포함한 숫자 7개를 입력받기 위한 7번 반복
+			again: // 숫자가 중복되거나 45를 넘기면 이곳에서 다시 번호를 추첨함
+
+			printf("%d번째 번호: %s", j + 1, (j == 6 ? BONUS : ""));
+			scanf("%d", &mnum);
+
+			for (int k = 0; k < j; k++) { // 숫자 중복 감지
+				if (mnum == marr[k]) { // 선택한 숫자가 이전의 숫자와 하나라도 같으면
+					printf("숫자 중복 감지.\n");
+
+					goto again; // again으로 역행
 				}
-
-				manualarr[j] = manualnum;
-				
-				fprintf(fp, "%d\n", manualarr[j]);
 			}
 
-			printf("\n");
+			if (mnum > MAX) { // 숫자가 45를 넘기면
+				printf("숫자 초과 감지.\n");
+
+				goto again; // again으로 역행
+			}
+
+			marr[j] = mnum;
 		}
 	}
 
-	// 파일 분석 후 번호 추첨
-	if (recommend == 1) {
-		int buffer[128];
-		int str[128] = { 0 };
-
-		int count[128] = { 0 };
-
-		fopen("rotto.txt", "r"); // 읽기모드로 파일 열기
-
-		for (int i = 0; i < COUNTMAX * automatic; i++) {
-			str[i] = atoi(fgets(buffer, 128, fp)); // 숫자로 형변환
-		}
-
-		fclose(fp); // 파일 닫기
-
-		printf("----- 통계 -----\n");
-
-		for (int i = 0; i < MAX; i++) {
-			count[str[i]]++;
-
-			if (count[i]) {
-				printf("%d번: %d\n",i, count[i]);
-			}
-		}
-
-		sort(str);
-
-		printf("\n");
-		printf("----- 가장 많이 뽑힌 번호를 추천합니다. -----\n\n");
-	}
+	menu(); // 메뉴 함수 호출
 }
