@@ -136,7 +136,7 @@ void rotto_auto(int automatic, int manual) {
 		printf("----- %d번째 로또 -----\n", i + 1);
 
 		for (int j = 0; j < 7; j++) {
-			again: // goto artrn에 의해 이곳에서 다시 순차 실행
+			again: // goto again에 의해 이곳에서 다시 순차 실행
 
 			anum[j] = rand() % MAX + 1; // 1 부터 45까지 랜덤으로 난수 생성
 
