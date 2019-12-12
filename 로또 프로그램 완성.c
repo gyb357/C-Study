@@ -175,7 +175,7 @@ void rotto_auto(int automatic, int manual) {
 
 	printf("----- 통계 -----\n");
 
-	for (int i = 1; i < MAX; i++) {
+	for (int i = 0; i < MAX + 1; i++) {
 		printf("%d번: %d\n", i, count[i]);
 	}
 
